@@ -1,0 +1,60 @@
+<div *ngIf="!(steps | async)" class="inline-loader"></div>
+
+<ng-container *ngIf="(steps | async)?.length!==0">
+  <h1>Project CheckList</h1>
+  <div class="form-group p-x p-y">
+    <label>Add a Step</label>
+    <input type="text" class="form-control sm block task-input" #addStepName (keyup.enter)="addStep(addStepName.value); addStepName.value = '';">
+    <span>Press Enter to Save</span>
+  </div>
+  <div class="progress">
+    <span class="progress-count">15 of 17 Tasks Completed</span>
+    <span class="progress-bar"></span>
+  </div>
+
+  <div class="checklist-wrapper">
+
+    <section *ngFor="let step of steps | async" class="checklist-container">
+
+      <h2 class="underlined-title m-0">{{step.name}}</h2>
+      <span class="step-progress"></span>
+
+      <div *ngIf="!(tasks | async)" class="sm inline-loader"></div>
+      <div *ngIf="(tasks | async | filter: 'stepKey' : step.pushKey)?.length ===0" class="blankslate"> No task add one </div>
+      <ul *ngIf="(tasks | async | filter: 'stepKey' : step.pushKey)?.length!==0" class="m-y">
+
+        <ng-container *ngFor="let task of tasks | async | filter: 'stepKey' : step.pushKey">
+          <li class="task">
+            <span class="checkbox" [class.checked]="task.isDone" (click)="task.isDone=!task.isDone; taskStatus(task.pushKey, task.isDone)"></span>
+            <input type="text" #taskName class="form-control input-as-text" [class.stroked]="task.isDone" value="{{task.name}}" (keyup.enter)=taskEdit(task.pushKey,taskName.value)>
+            <span class="input-info"> Press Enter to Save </span>
+          </li>
+        </ng-container>
+
+
+      </ul>
+      <div class="p-y-md">
+        <label>Add an Task</label>
+        <input type="text" class="form-control block" #taskAddTitle (keyup.enter)="addTask(taskAddTitle.value, step.pushKey); taskAddTitle.value = '';">
+        <span class="sm text-grey"> Press Enter to add </span>
+      </div>
+
+    </section>
+
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="(steps | async)?.length===0">
+  <div class="blankslate">
+    <div class="grid grid-sm">
+      <div class="one-half ">
+        Oops no step added. Don`t worry creating one is easy just give it a name;
+      </div>
+      <div class="one-half">
+        <input type="text" class="form-control nm block" #addStepFromEmptyState placeholder="Type a step Step Name">
+        <button class="nm block-center m-y" (click)="addStep(addStepFromEmptyState.value)"> Add Step </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

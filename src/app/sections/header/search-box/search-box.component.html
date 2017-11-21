@@ -1,0 +1,43 @@
+<div class="container">
+
+  <span title="Search Week Tweak" class="icon-container" (click)="searchBoxOpen = !searchBoxOpen">
+    <svg class="icon icon-white">
+      <use xlink:href="assets/svg/icons.svg#icon-magnifier"></use>
+    </svg>
+  </span>
+
+  <div class="search" [class.open]="searchBoxOpen">
+    <span title="Close Search" class="clickable icon-search-close" (click)="searchBoxOpen = !searchBoxOpen">
+      <svg class="icon">
+        <use xlink:href="assets/svg/icons.svg#icon-cross"></use>
+      </svg>
+    </span>
+
+    <div class="search-form">
+
+      <input class="search-input" name="search" type="search" placeholder="Find..." #searchQuery
+        (keyup.escape)="searchBoxOpen = !searchBoxOpen"
+        (keyup.enter)="search(searchQuery.value)">
+
+      <span class="search-info">Hit enter to search or ESC to close</span>
+
+    </div>
+
+    <div class="search-related">
+      <div class="search-suggestion">
+        <div class="title text-green">May We Suggest?</div>
+        <div class="btn"  (click)="clear($event)">Clear</div>
+        <div class="card m-y-md" *ngFor="let result of searchResult | async">
+          <p>{{result.name}}</p>
+        </div>
+        <p class="text-red">#drone #funny #catgif #broken #lost #hilarious #good #red #blue #nono #why #yes #yesyes #aliens #green</p>
+      </div>
+    </div>
+
+  </div>
+  <!-- /search -->
+
+  <div class="overlay"></div>
+
+</div>
+<!-- /container -->

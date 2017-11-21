@@ -1,0 +1,66 @@
+<div (clickOutside)="onClickOutsideMainMenu($event)" style="height: 100%; flex-shrink: 0;">
+  <!-- to get expected behaviour, wrapped in a extra div -->
+
+  <span (click)="menuToggle=!menuToggle" class="menu-toggle-icon clickable">
+    <svg class="icon icon-white">
+      <use xlink:href="assets/svg/icons.svg#icon-menu"></use>
+    </svg>
+  </span>
+  
+  <div class="main-menu-container" [class.menu-toggle]="menuToggle">
+
+
+    <div class="user-area" routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <img src="{{userPhoto}}">
+      <h3 class="xs">{{userName}}</h3>
+    </div>
+
+    <ul class="main-nav">
+      <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-home2"></use>
+        </svg>
+        <span>Week</span>
+      </li>
+      <li routerLink="/projects" routerLinkActive="active" title="Projects">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-folder2"></use>
+        </svg>
+        <span>Projects</span>
+      </li>
+      <li routerLink="/files" routerLinkActive="active" title="Files">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
+        </svg>
+        <span>Files</span>
+      </li>
+      <li routerLink="/store" routerLinkActive="active" title="Store">
+        <svg class="icon icon-user">
+          <use xlink:href="assets/svg/icons.svg#icon-week"></use>
+        </svg>
+        <span>Store</span>
+      </li>
+      <li routerLink="/life" routerLinkActive="active" title="Life">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-compass"></use>
+        </svg>
+        <span>Life</span>
+      </li>
+      <li routerLink="/stats" routerLinkActive="active" title="Analysis">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-stats"></use>
+        </svg>
+        <span>Analysis</span>
+      </li>
+    </ul>
+
+    <div class="logo">
+      <span>w</span>
+      <span>eek</span>
+      <span>t</span>
+      <span>weak</span>
+    </div>
+
+
+  </div>
+</div>

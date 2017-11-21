@@ -1,0 +1,189 @@
+.search {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding: 3em;
+  background: #fff;
+  pointer-events: none;
+  transition: transform 0.3s;
+  transition-delay: 0.4s;
+  transition-timing-function: ease-out;
+}
+
+.search::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transition: transform 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.search.open {
+  pointer-events: auto;
+  transform: translate3d(-100%,0,0);
+  transition-delay: 0s;
+}
+
+.search.open::after {
+  transform: translate3d(100%,0,0);
+  transition-delay: 0.4s;
+}
+
+.search-input {
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.search-input {
+  font-family: inherit;
+  font-size: 6vw;
+  line-height: 1;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0.05em 0;
+  color: #000;
+  border-bottom: 2px solid;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-info {
+  display: block;
+  padding: 0.85em 0;
+  font-size: 0.89em;
+  font-weight: bold;
+}
+
+.icon-search-close {
+  position: absolute;
+  font-size: 2em;
+  top: 1.25em;
+  right: 1.25em;
+}
+
+.search-related {
+  display: flex;
+  padding-top:4em;
+  pointer-events: none;
+}
+
+.search-suggestion {
+  width: 50%;
+}
+
+@media screen and (max-width: 40em) {
+  .search-related {
+    font-size: 80%;
+    width: 75%;
+  }
+  .search-input {
+    font-size: 2em;
+    width: 85%;
+  }
+  .search-info {
+    width: 90%;
+  }
+  .icon-search-close {
+    font-size: 1em;
+    top: 1.25em;
+    right: 1.25em;
+  }}
+
+/* SEARCH INPUT RESETS */
+
+.search-input::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #969696;
+}
+
+.search-input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  opacity: 1;
+  color: #969696;
+}
+
+.search-input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #969696;
+}
+
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.search-input::-ms-clear {
+  display: none;
+}
+
+
+
+
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+  transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.search.open ~ .overlay {
+  opacity: 1;
+}
+
+
+
+/* overlay other */
+.main-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /*height: 100vh;*/
+  background-color: #fff;
+  
+  background-repeat: no-repeat;
+  background-position: 50% 10em;
+  background-size: 75% auto;
+}
+
+.main-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+.main-wrap::after {
+  transition: opacity 0.3s;
+  transition-timing-function: ease-out;
+}

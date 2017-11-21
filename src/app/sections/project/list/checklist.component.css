@@ -1,0 +1,70 @@
+/* CHECKLIST WRAPPER STYLES */
+.progress {
+  margin-bottom: 5px;
+  padding: 1em 4em;
+}
+
+.progress-count {
+  text-align: center;
+  margin: 0;
+  padding-bottom: 0.71em;
+  border-bottom: 2px solid #dadada;
+}
+
+.progress-bar {
+  display: block;
+  height: 1em;
+  transition: transform .5s ease;
+  transform: scaleX(.5);
+  transform-origin: left;
+  background: #2ca58d;
+}
+
+
+/* CHECKLIST WRAPPER STYLES */
+.checklist-wrapper {
+  max-width: 1550px;
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  justify-content: flex-start;
+  margin: 0 auto;
+  padding: 1em 0;
+}
+
+@media (min-width: 344px) { .checklist-wrapper { width: 344px; }}
+@media (min-width: 751px) { .checklist-wrapper { width: 673px; }}
+@media (min-width: 1100px) {.checklist-wrapper { width: 1032px; }}
+@media (min-width: 1600px) {.checklist-wrapper { width: 1076px; }}
+
+
+.checklist-wrapper .checklist-container {
+  width: 20.41em;
+  margin: 1em 1em 0;
+  position: relative;
+}
+
+.step-progress {
+  display: block;
+  margin-bottom: 8px;
+  width: 20.41em;
+  height: 6px;
+  transition: transform 350ms ease;
+  transform: scaleX(.5);
+  transform-origin: left;
+  background: #2ca58d;
+}
+
+
+.task-window {
+  margin: .5em;
+  overflow-y: auto;
+  max-height: 16.19em;
+}
+
+.task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: .5em 0;
+}

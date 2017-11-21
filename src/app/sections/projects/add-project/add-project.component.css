@@ -1,0 +1,28 @@
+.form-container {
+	margin: 1em auto;
+	max-width: 28.91em;
+	box-sizing: border-box;
+}
+
+/* Radio Tabs */
+
+.radio-tabs {
+  display: flex;
+  font-size: 0.89em;
+}
+
+.radio-tabs label {
+	padding: 0.63em 1em;
+	background-color: #dadada;
+	cursor: pointer;
+}
+
+.radio-tabs label:not(:last-child){
+  margin-right: .5em;
+}
+
+.radio-tabs input[type="radio"]:checked + label { /* so that only once we use this code*/
+	background-color: #2ca58d;
+	color: #fff;
+}
+

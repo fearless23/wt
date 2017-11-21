@@ -1,0 +1,29 @@
+<div class="grid grid-sm">
+  <section class="full card">
+    <header class="bg-grey">Project Information</header>
+    <div class="content">
+      <div>{{(project | async)?.name}}</div>
+      <div>{{(project | async)?.description}}</div>
+      <div>Category: {{(project | async)?.category}}</div>
+      <div>Type: {{(project | async)?.type}}</div>  
+      <div>Created On: {{(project | async)?.dateAdded | date:'longDate'}} </div>
+      <div>{{(project | async)?.pushKey}}</div>
+    </div>
+  </section>
+</div>
+
+<div class="grid grid-sm">
+  <section class="one-half card">
+    <header class="bg-grey">Action Plan</header>
+    <div class="content">
+      Action Plan
+    </div>
+  </section>
+  <section class="one-half card">
+    <header class="bg-grey">Current Milestone</header>
+    <div class="content">
+      Milestone
+    </div>
+     
+  </section>
+</div>

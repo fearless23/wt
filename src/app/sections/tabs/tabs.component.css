@@ -1,0 +1,36 @@
+/* TABS GROUP */
+
+.tabs {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 1.12em;
+  border-bottom: 2px solid #efefef;
+  background-color: #fafafa;
+}
+
+.tab {
+  margin-right: 1.12em;
+  padding: 0.44em 0.5em;
+  color: #818487;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.tab:not(last-child) {
+  margin-right: 1.12em;
+}
+
+.tab:hover {
+  color: #2ca58d;
+}
+
+.tab.active,.tab.active:hover {
+  color: #2ca58d;
+  font-weight: bold;
+  border-bottom: 2px solid #2ca58d;
+  transition: border-bottom .31s linear;
+}

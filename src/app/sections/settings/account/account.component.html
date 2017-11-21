@@ -1,0 +1,73 @@
+<div class="m-b-lg">
+  <h2 class="underline-title"> Email </h2>
+  <div class="form-group p-x">
+    <!-- Div ==> form -->
+    <label> Primary Email </label>
+    <input type="email" class="form-control input-grey" placeholder="{{(user | async)?.email}}">
+    <button class="btn sm bg-blue"> Change Email </button>
+  </div>
+</div>
+
+<div class="m-b-lg">
+  <h2 class="underline-title"> Change Password </h2>
+
+  <div class="form-group p-x">
+    <label class="form-label"> Old Password </label>
+    <input type="password" class="form-control input-grey" id="" name="" size="30" value="">
+  </div>
+  <div class="form-group p-x">
+    <label class="form-label"> New Password </label>
+    <input type="password" class="form-control input-grey" id="" name="" size="30" value="">
+  </div>
+  <div class="form-group p-x">
+    <label class="form-label"> Confirm Password </label>
+    <input type="password" class="form-control input-grey" id="" name="" size="30" value="">
+  </div>
+  <p>
+    <button class="btn sm bg-blue"> Change Password </button>
+    <span><small>I forgot my password </small></span>
+  </p>
+
+  <p>
+    <small> Looking for two step authentication? You can find it in Security </small>
+  </p>
+</div>
+
+<div class="m-b-lg">
+
+  <div class="section-title"> Demographics </div>
+
+  <div class="form-group p-x">
+    <label class="form-label"> Language </label>
+    <select class="form-select" name="" id="">
+      <option value="en">English</option>
+      <option value="hn">Hindi</option>
+      <option value="pn">Punjabi</option>
+      <option value="auto">Auto</option>
+    </select>
+  </div>
+
+  <div class="form-group p-x">
+    <label class="form-label"> Country </label>
+    <!-- <select class="form-select" name="" id="">
+        <option value="{{country.code}}" *ngFor=" let country of countriesList | async ">{{country.name}}</option>
+      </select> -->
+  </div>
+
+  <div class="form-group p-x">
+    <label class="form-label"> Gender </label>
+    <select class="form-select" name="" id="">
+      <option value="Male">Male</option>
+      <option value="Male">Female</option>
+      <option value="Other">Other</option>
+      <option value="Skip">Don`t want to Tell</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="m-b-lg">
+  <div class="section-title"> Delete Account </div>
+  <p class="text-red p-x">This is a danger Zone. </p>
+  <button class="btn btn-sm btn-red m-x"> Delete Account </button>
+</div>

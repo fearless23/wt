@@ -1,0 +1,62 @@
+<div class="fbox-sb p-x p-y-md bg-white2">
+  <button class="btn-clear" routerLink="/projects"> Back to Projects</button>
+</div>
+<div class="p-x-md m-t-md">
+
+  <div class="form-container p-x-md m-t-md">
+    <h2 class="underlined-title"> Create Project</h2>
+    <form [formGroup]="addProjectForm" (ngSubmit)="addProject(addProjectForm.value)">
+
+      <!--============  NAME  =========================-->
+      <div class="form-group">
+        <label>Project Name</label>
+        <input type="text" class="form-control input-md" placeholder="Learn Painting" formControlName="name">
+      </div>
+
+      <!--============  CATEGORY (radio tabs) =========================-->
+      <div class="form-group">
+        <label>Choose a Category</label>
+           <!-- TODO: give some description -->
+        <div class="radio-tabs">
+
+          <input type="radio" class="hidden" id="personal" name="category" value="personal" formControlName="category">
+          <label for="personal">Personal</label>
+
+          <input type="radio" class="hidden" id="pro" name="category" value="pro" formControlName="category">
+          <label for="pro">Pro</label>
+
+          <input type="radio" class="hidden" id="social" name="category" value="social" formControlName="category">
+          <label for="social">Social</label>
+
+        </div>
+      </div>
+
+      <!--============  TYPE (radio tabs) =========================-->
+      <div class="form-group">
+        <label>Choose a Type</label>
+
+        <div class="radio-tabs">
+
+          <input type="radio" class="hidden" id="learn" name="type" value="learn" formControlName="type">
+          <label for="learn">Learn</label>
+
+          <input type="radio" class="hidden" id="create" name="type" value="create" formControlName="type">
+          <label for="create">Create</label>
+
+        </div>
+      </div>
+
+      <!--============  BIO  =========================-->
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" placeholder="Learn painting from online youtube courses." formControlName="description">
+      </textarea>
+      </div>
+
+      <button type="submit" class="block p-y-md xs" value="Submit Form" [disabled]="!addProjectForm.valid">
+        Add Project
+      </button>
+
+    </form>
+  </div>
+</div>

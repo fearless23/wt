@@ -1,0 +1,106 @@
+.card-group-container {
+	display: flex;
+	flex-flow: row wrap;
+  flex: 1;
+	justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+	margin: 0 auto;
+  padding: 1em 0;
+}
+
+@media (min-width: 23.41em) { .card-group-container { width: 21.41em; }}
+@media (min-width: 44.84em) { .card-group-container { width: 42.84em; }}
+@media (min-width: 66.23em) { .card-group-container { width: 64.23em; }}
+@media (min-width: 87.64em) { .card-group-container { width: 85.64em; }}
+
+.card-container {
+  box-sizing: border-box;
+  margin: 0 .5em 1.79em .5em;
+  width: 20.41em;
+  padding: 1em 1em 1.26em;
+
+  border: 1px solid #dadada;
+  border-radius: 0.22em;
+  background-color: white;
+  box-shadow: 4px 4px 6px #dadada;
+}
+
+.card-container > div:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.description {
+  font-size: 0.89em;
+  height: 7.70em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity {
+  font-size: 0.8em;
+  font-style: italic;
+  color: #2ca58d;
+}
+
+/* .project-progress {
+  width: 100%;
+  position: relative;
+}
+
+.project-progress:before {
+  content: '';
+  position: absolute;
+  top:0px;
+  left:0;
+  width: 100%;
+  height: 0.31em;
+  background-color: #b5b5b5;
+}
+
+.project-progress:after {
+  content: '';
+  position: absolute;
+  top:0px;
+  left:0;
+  width: 78%;
+  height: 0.31em;
+  background-color: #2ca58d;
+}
+
+.project-progress span {
+  display: block;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding-top:0.44em;
+} */
+
+.status {
+  display: block;
+  position: relative;
+  margin-left: 1.42em;
+  font-size: .89em;
+}
+
+.status:before {
+  content: '';
+  position: absolute;
+  top: 0.25em;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin-left: -1.42em;
+  background: #4d5256;
+}
+
+.status.active:before {
+  background-color: #2ca58d;
+}
+
+
+.no-project-img{
+  max-width: 20em;
+  max-height: 20em;
+  mix-blend-mode: multiply;
+}

@@ -1,0 +1,68 @@
+/* TODO: make a utility */
+
+.tags-list {
+  display: flex;
+}
+
+.tag-item {
+  font-size: 0.8em;
+  padding: 0.44em 0.89em;
+  border: 1px solid rgba(181,181,181,0.5);
+}
+
+.tag-item:not(:last-child) {
+  margin-right: .5em;
+}
+
+.filter-links li {
+  margin: 0 0.5em;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.filter-links li:hover {
+  color: #00a8e8;
+}
+
+.filter-links li.active {
+  color: #00a8e8;
+}
+
+.filter-links li.active:hover {
+  color: #00a8e8;
+  cursor: default;
+}
+
+
+.step-description {
+  font-size: 0.89em;
+  margin: 0.63em 0 0.44em 0;
+  min-height: 4.005em;
+}
+
+.step-goals {
+  padding: 0.44em 1.42em;
+}
+
+
+.task-window {
+  overflow-y: auto;
+  max-height: 16.19em;
+}
+
+.task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: .5em 0;
+}
+
+
+.task-actions {
+  display: none;
+  /* display: flex; */
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 0.5em;
+}

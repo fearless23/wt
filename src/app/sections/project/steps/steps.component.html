@@ -1,0 +1,268 @@
+<div *ngIf="!(steps | async)" class="inline-loader"></div>
+<!--======= #BLANKSLATE =======-->
+<ng-container *ngIf="(steps | async)?.length===0">
+  <div class="blankslate">
+    <div class="grid grid-sm">
+      <div class="one-half ">
+        Oops no step added. Don`t worry creating one is easy just give it a name;
+      </div>
+      <div class="one-half">
+        <input type="text" class="form-control nm block" #addStepFromEmptyState placeholder="Type a step Step Name">
+        <button class="nm block-center m-y" (click)="addStep(addStepFromEmptyState.value)"> Add Step </button>
+      </div>
+    </div>
+
+  </div>
+</ng-container>
+<!--======= #STEP SELECTOR =======-->
+<ng-container *ngIf="(steps | async)?.length!==0">
+  <div class="fbox-sb grid">
+
+    <div class="pos-rel" style="min-width: 18.18em;" (clickOutside)="onClickOutsideStepSelector($event)">
+      <h2>Select an Action Step</h2>
+      <div class="fbox-btn" (click)="dropStepSelector = !dropStepSelector">
+        <span class="sm bold">{{(selectedStep | async)?.name}}</span>
+        <span title="Select an Action Step" class="icon-container">
+          <svg class="icon sm">
+            <use xlink:href="assets/svg/icons.svg#icon-angle-down2"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="dropdown bottom parent-width" [class.is-active]="dropStepSelector">
+        <div class="menu-title">Select a Step</div>
+        <ul class="menu">
+          <li [class.active]="selectedStepKey===step.pushKey" *ngFor="let step of steps | async" (click)="setStepId(step.pushKey); dropStepSelector = !dropStepSelector">
+            {{step.name}}
+          </li>
+        </ul>
+        <hr>
+        <div class="form-group p-x p-y">
+          <label>Add a Step</label>
+          <input type="text" class="form-control sm block task-input" #addStepName (keyup.enter)="addStep(addStepName.value); addStepName.value = '';">
+          <span>Press Enter to Save</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button>Jassi</button>
+
+  </div>
+</ng-container>
+<!--======= #STEP INFO AND TASKS =======-->
+<ng-container *ngIf="(steps | async)?.length!==0">
+  <div class="grid">
+
+    <div class="one-half card">
+
+      <div class="content">
+        <div class="fbox-sb p-y">
+
+          <ul class="tags-list">
+            <li class="tag-item">Dev</li>
+            <li class="tag-item">Backend</li>
+            <li class="tag-item">Coding</li>
+          </ul>
+
+          <div class="dropdown-container" (clickOutside)="onClickOutsideStepWindowDropdown($event)">
+            <span title="Step Actions" class="clickable icon-container" (click)="stepWindowDropdown = !stepWindowDropdown">
+              <svg class="icon">
+                <use xlink:href="assets/svg/icons.svg#icon-v-dots"></use>
+              </svg>
+            </span>
+            <div class="dropdown" [class.is-active]="stepWindowDropdown">
+              <ul class="menu">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="bold m-y">{{(selectedStep | async)?.name}}</h3>
+
+        <div class="step-description">{{(selectedStep | async)?.description}}</div>
+        <!-- <input type="text" #stepSummary class="form-control input-sm input-as-text" 
+                (keyup.enter)="stepEdit( stepKey, stepSummary.value)"> -->
+
+        <div class="p-x">
+          <h3 class="text-blue">Goals</h3>
+          <ul class="m-y">
+            <li class="task" *ngFor="let goal of (selectedStep | async)?.goals">{{goal}}</li>
+          </ul>
+        </div>
+
+
+        <div class="fbox-sa">
+
+          <div class="card-info">
+            <span class="card-info-title">Created On </span>
+            <span class="card-info-detail">{{(selectedStep | async)?.dateAdded | date:'longDate'}}</span>
+          </div>
+
+          <div class="card-info">
+            <span class="card-info-title">Due Date</span>
+            <span class="card-info-detail">{{(selectedStep | async)?.dueDate | date:'longDate'}} </span>
+          </div>
+
+          <div class="card-info">
+            <span class="card-info-title">Status</span>
+            <span class="card-info-detail text-green-light">In Progress</span>
+          </div>
+
+        </div>
+        <!--
+      <button type="button" class="btn btn-blue"> Open in Focus Mode </button>-->
+
+      </div>
+    </div>
+
+    <!-- <div class="col-gutter"></div> -->
+
+    <div class="one-half card">
+      <header class="fbox-sb bg-grey">
+        <h3 class="text-green">Tasks</h3>
+        <div class="icon-container clickable dropdown-container" title="step-actions">
+          <svg class="icon">
+            <use xlink:href="assets/svg/icons.svg#icon-v-dots"></use>
+          </svg>
+          <div class="dropdown active-on-hover">
+            <ul class="menu">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="content">
+
+
+
+        <div class="fbox-sb">
+
+          <div class="fbox-btn dropdown-container">
+            <span class="bold sm"> This Week </span>
+            <span style="margin-left: .5em;" class="icon-container" title="Select Step Projects">
+              <svg class="icon sm">
+                <use xlink:href="assets/svg/icons.svg#icon-selector"></use>
+              </svg>
+            </span>
+            <div class="dropdown left active-on-hover">
+              <ul class="menu">
+                <li>This Week</li>
+                <li>Last Week</li>
+                <li>Next Week</li>
+                <li>All Tasks</li>
+              </ul>
+
+            </div>
+          </div>
+
+          <ul class="fbox-sb filter-links">
+            <li (click)="filterTasksByStatus('any')" [class.active]="taskActive==='any'">All</li>
+            <li (click)="filterTasksByStatus('true')" [class.active]="taskActive==='true'">Done</li>
+            <li (click)="filterTasksByStatus('false')" [class.active]="taskActive==='false'">Remaining</li>
+          </ul>
+
+        </div>
+
+        <div *ngIf="!(tasksForStep | async)" class="inline-loader inline-loader-sm"></div>
+        <ul class="task-window">
+          <li *ngFor="let task of tasksForStep | async | bool:'isDone':taskStatusFilter ">
+            <div class="task">
+              <span class="checkbox" [class.checked]="task.isDone" (click)="task.isDone=!task.isDone; taskStatus(task.pushKey, task.isDone)"></span>
+              <input type="text" #taskTitle class="form-control input-as-text" [class.stroked]="task.isDone" value="{{task.name}}" (keyup.enter)=taskEdit(task.pushKey,taskTitle.value)>
+              <span class="input-info"> Press Enter to add </span>
+            </div>
+            <div class="task-actions">
+              <div class="m-x" title="Search">
+                <svg class="icon sm">
+                  <use xlink:href="assets/svg/icons.svg#icon-search"></use>
+                </svg>
+              </div>
+              <div class="m-x" title="Delete Task" (click)="removeTask(task.$key)">
+                <svg class="icon sm">
+                  <use xlink:href="assets/svg/icons.svg#icon-del"></use>
+                </svg>
+              </div>
+              <div class="m-x" title="Open">
+                <svg class="icon sm">
+                  <use xlink:href="assets/svg/icons.svg#icon-open-link"></use>
+                </svg>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="blankslate" *ngIf="(tasksForStep | async)?.length===0"> No tasks </div>
+
+        <div class="fbox-sa">
+          <div class="card-info">
+            <span class="card-info-detail text-blue">{{(tasksForStep | async)?.length}}</span>
+            <span class="card-info-title">TASKS</span>
+          </div>
+          <div class="card-info">
+            <span class="card-info-detail text-blue">{{completedTasksLength}}</span>
+            <span class="card-info-title">COMPLETED</span>
+          </div>
+          <div class="card-info">
+            <span class="card-info-detail text-blue">{{stepProgress? stepProgress: 0}} %</span>
+            <span class="card-info-title">PROGRESS</span>
+          </div>
+
+
+
+        </div>
+
+        <div class="form-group p-y-md">
+          <label>Add an Task</label>
+          <input type="text" class="form-control sm block" #taskAddTitle (keyup.enter)="addTask(taskAddTitle.value); taskAddTitle.value = '';">
+          <span class="sm text-grey"> Press Enter to add </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+<!--======= #NOTES AND BACKBURNERS =======-->
+<ng-container *ngIf="(steps | async)?.length!==0">
+  <div class="grid">
+    <section class="one-half card">
+      <header class="bg-grey">
+        <h3 class="text-green">Notes</h3>
+      </header>
+      <div class="content">
+        <ul>
+          <li *ngFor="let note of (selectedStep | async)?.notes">{{note}}</li>
+        </ul>
+        <div class="form-group p-y-md">
+          <label>Add a note</label>
+          <input type="text" class="form-control sm block" #addNoteName (keyup.enter)="addNote(addNoteName.value); addNoteName.value = '';">
+          <span class="sm text-grey"> Press Enter to add </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="one-half card">
+      <header class="bg-grey">
+        <h3 class="text-green">Backburners</h3>
+      </header>
+      <div class="content">
+        <ul class="menu">
+          <li *ngFor="let backburner of (selectedStep | async)?.backburners">{{backburner}}</li>
+        </ul>
+        <div class="form-group p-y-md">
+          <label>Add a Backburner</label>
+          <input type="text" class="form-control sm block" #addBackburnerName (keyup.enter)="addBackburner(addBackburnerName.value); addBackburnerName.value = '';">
+          <span class="sm text-grey"> Press Enter to add </span>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-container>

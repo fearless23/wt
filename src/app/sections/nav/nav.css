@@ -1,0 +1,200 @@
+.menu-toggle-icon{
+  position: fixed;
+  top: 0.965em;
+  left: 1em;
+  z-index: 102;
+}
+
+@media (min-width: 40.94em) {
+  .menu-toggle-icon{
+    display: none;
+  }
+}
+
+.main-menu-container {
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 4.52em;
+  height: 100%;
+  background-color: #FFFFFF;
+  transition: width 0.2s ease-in;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 4px 0px 4px 0px hsla(0, 0%, 71%, 0.21);
+}
+
+.user-area {
+  box-sizing: border-box;
+  min-height: 4.52em;
+  height: 5.07em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+}
+
+.user-area:hover {
+  cursor: pointer;
+  background: hsla(0, 0%, 71%, 0.21);
+}
+
+.user-area.active {
+  border-left: 3px solid #2ca58d;
+}
+
+.user-area img {
+  box-sizing: border-box;
+  height: 3.19em;
+  width: 3.19em;
+  border-radius: 50%;
+}
+
+.main-menu-container .user-area h3 {
+  display: none;
+  margin-left: 1em;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 27.12em; /* 6 times list-item height - rounded to nearest modular scale number */
+}
+
+.main-nav li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 4.52em;
+  height: 4.52em;
+  padding: 0.5em 0 0.44em 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  color: hsla(207, 6%, 32%, 0.71);
+  cursor: pointer;
+  transition: flex-direction 0.3s linear;
+}
+
+.main-nav li:hover{
+  color: #4d5256;
+  background: hsla(0, 0%, 71%, 0.21);
+}
+
+.main-nav li:hover svg.icon {
+  fill: #4D5256;
+}
+
+.main-nav li.active, .main-nav li.active:hover {
+  border-left: 3px solid #2ca58d;
+  color: #2ca58d;
+  background-color: white;
+  cursor: default;
+}
+
+.main-nav li.active svg.icon, .main-nav li.active:hover svg.icon {
+  fill: #2ca58d;
+}
+
+.main-nav li span {
+  font-size: 0.8em;
+  opacity: 0;
+  display: none;
+  position: fixed;
+  padding: .44em .89em;
+  background: #4d5256;
+  color: #f0f0f0;
+  left: 5.07em;
+  border-radius: .22em;
+}
+
+.main-nav li:hover span {
+  display: block;
+  opacity: 1;
+  z-index: 103;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  min-height: 2.25em;
+  box-sizing: border-box;
+  padding: 0.5em 0;
+  color: #00a8e8;
+  font-size: 1.79em;
+  font-weight: bold;
+}
+
+.logo span:first-child,.logo span:nth-child(2){
+  color: rgba(0, 168, 232, 0.71);
+}
+
+.logo span:nth-child(2n){
+  position: absolute;
+  width: 0;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+
+@media (max-width: 40.94em) {
+  .main-menu-container {
+    z-index: 103;
+    position: fixed;
+    width: 16.19em;
+    left: -16.19em;
+    transform: translateX(0em);
+    transition: transform .3s ease-out;
+  }
+
+  .main-menu-container.menu-toggle {
+    transform: translateX(16.19em);
+    transition: transform .3s ease-out;
+  }
+
+  .main-menu-container .user-area {
+    justify-content: flex-start;
+    padding: 0 1em;
+  }
+  
+  .main-menu-container .user-area h3 {
+    display: block;
+  }
+
+  .main-menu-container .main-nav {
+    min-height: 20.41em;
+  }
+
+  .main-menu-container .main-nav li {
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 3.19em;
+    height: 3.19em;
+    padding-left: 1em;
+  }
+
+  .main-menu-container .main-nav li span {
+    position: relative;
+    margin-left: 1em;
+    display: block;
+    opacity: 1;    
+    padding: 0;
+    background: transparent;
+    color: initial;
+    left: initial;
+  }
+
+  .main-menu-container .logo span:nth-child(2n) {
+    position: relative;
+    width: auto;
+    opacity: 1;
+    transition: all 0.2s linear;
+  }
+}
