@@ -1,0 +1,12 @@
+<div class="fbox-sb p-x p-t bg-white2">
+  <h2>Add Stuff</h2>
+  <button class="btn btn-white" routerLink="help">Help</button>
+</div>
+<ul class="tabs">
+  <li class="tab" routerLink="project" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Project</li>
+  <li class="tab" routerLink="step" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Action Step</li>
+  <li class="tab" routerLink="task" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Task</li>
+
+</ul>
+
+<router-outlet></router-outlet>

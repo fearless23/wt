@@ -20,10 +20,6 @@ export class HeaderComponent implements OnInit {
     this.drop = false;
   }
 
-  onClickOutsideNotification(event: Object) {
-    this.dropNotification = false;
-  }
-
   onClickOutsideProjectSelector(e) {
     this.dropProjectSelector = false;
   }

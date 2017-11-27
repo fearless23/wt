@@ -29,11 +29,11 @@ const routes: Routes = [
       {
         path: 'settings', loadChildren: './settings/settings.module#SettingsModule',
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'add-stuff', loadChildren: './add-stuff/add-stuff.module#AddStuffModule',
+        canActivate: [AuthGuard]
       }
-      // {
-      //   path: 'add-stuff', loadChildren: './add-stuff/add-stuff.module#AddStuffModule',
-      //   canActivate: [AuthGuard]
-      // },
       // {
       //   path: 'profile', loadChildren: './profile/profile.module#ProfileModule',
       //   canActivate: [AuthGuard]

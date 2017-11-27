@@ -11,7 +11,7 @@
       </svg>
     </div>
 
-    <div title="Your Notifications" class="dropdown-container" (clickOutside)="onClickOutsideNotification($event)">
+    <div title="Your Notifications" class="dropdown-container" dropdown>
 
       <span title="Notifications" class="icon-container icon-dot" (click)="dropNotification = !dropNotification">
         <svg class="icon icon-white">
@@ -78,7 +78,7 @@
 
     </div> -->
 
-    <div class="dropdown-container" (clickOutside)="onClickOutside($event)">
+    <div class="dropdown-container" dropdown>
 
       <span title="User Actions like Profile, Settings, Logout" class="clickable icon-container" (click)="drop = !drop">
         <svg class="icon icon-white">

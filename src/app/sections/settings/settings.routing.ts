@@ -9,7 +9,7 @@ import { AccountSettingsComponent } from './account/account.component';
 import { ProfileSettingsComponent } from './profile/profile.component';
 
 // Routes
-const projectsRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: SettingsComponent,
@@ -21,7 +21,7 @@ const projectsRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(projectsRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 

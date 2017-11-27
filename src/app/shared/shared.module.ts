@@ -17,6 +17,7 @@ import { TrueFalsePipe } from './pipes/true-false.pipe';
 
 // Shared Directives: Declare and export
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { DropdownDirective } from './directives/dropdown.directive';
 
 @NgModule({
   imports: [
@@ -34,9 +35,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     StringSearchPipe,
     TrueFalsePipe,
     // Directives
-    ClickOutsideDirective
-    // Import these if component inside this module need these
-    // but we have no components so far
+    ClickOutsideDirective,
+    DropdownDirective
   ],
   exports: [
     CommonModule,
@@ -49,7 +49,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     StringSearchPipe,
     TrueFalsePipe,
     // Directives
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    DropdownDirective
   ]
 })
 export class SharedModule { }
