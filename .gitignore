@@ -7,6 +7,17 @@
 # dependencies
 /node_modules
 
+# Environment Files
+/src/environments
+/src/environments/*
+
+# Firebase
+firebase.json
+database.rules.json
+.firebaserc
+.editorconfig
+wtWorkspace.code-workspace
+
 # IDEs and editors
 /.idea
 .project
@@ -14,7 +25,6 @@
 .c9/
 *.launch
 .settings/
-wtWorkspace.code-workspace
 
 # IDE - VSCode
 .vscode/*

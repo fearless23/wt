@@ -11,7 +11,7 @@ import { AlertsComponent } from './sections/alerts/alerts.component';
 const routes: Routes = [
   { path: '', loadChildren: './sections/start.module#StartModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'chat', loadChildren: './chat/chat.module#ChatModule' },
+  // { path: 'chat', loadChildren: './chat/chat.module#ChatModule' },
   { path: 'welcome', component: WelcomeComponent },
   { path: '**', component: NotFoundComponent }
 ];
